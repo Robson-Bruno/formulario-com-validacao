@@ -1,30 +1,41 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Formulário igual ao print</title>
-  <link rel="stylesheet" href="./src/css/style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulário com Validação</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/src/css/style.css">
 </head>
-<body>
-  <div class="container">
-    <div class="left-text">
-      <h2>FICOU COM DÚVIDA?<br>NOS MANDE UMA MENSAGEM!</h2>
-      <p>caso tenha ficado com qualquer dúvida<br>
-      basta nos mandar uma mensagem e<br>
-      entraremos em contato em menos de 24h.</p>
+<body class="min-h-screen p-4 form-bg">
+  <div class="container mx-auto flex flex-col md:flex-row items-center justify-center gap-12 md:gap-20 min-h-screen">
+    
+    <!-- Bloco de texto -->
+    <div class="w-full md:w-1/2 max-w-lg text-white p-4 md:p-8 text-left">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4 md:mb-6 uppercase">
+        Ficou com dúvida?<br>Nos mande uma mensagem!
+      </h2>
+      <p class="text-base md:text-xl">
+        Caso tenha ficado com qualquer dúvida, basta nos mandar uma mensagem e entraremos em contato em menos de 24h.
+      </p>
     </div>
-    <div class="right-form">
-      <form>
-        <input type="text" placeholder="Nome completo *" required>
-        <input type="email" placeholder="Email *" required>
-        <input type="tel" placeholder="Telefone *" required>
-        <textarea placeholder="Mensagem *" required></textarea>
-        <small>*campos obrigatórios</small>
-        <button type="submit">Enviar</button>
+
+    <!-- Bloco de formulário -->
+    <div class="form-container w-full md:w-1/2 max-w-md rounded-lg border border-gray-300 shadow-2xl p-6">
+      <form class="space-y-4">
+        <input type="text" placeholder="Nome completo *" class="w-full border border-black p-2 focus:outline-none focus:ring-2 focus:ring-green-400 rounded">
+        <input type="email" placeholder="Email *" class="w-full border border-black p-2 focus:outline-none focus:ring-2 focus:ring-green-400 rounded">
+        <input type="tel" placeholder="Telefone *" class="w-full border border-black p-2 focus:outline-none focus:ring-2 focus:ring-green-400 rounded">
+        <textarea placeholder="Mensagem *" rows="4" class="w-full border border-black p-2 focus:outline-none focus:ring-2 focus:ring-green-400 rounded resize-none"></textarea>
+        
+        <p class="text-sm text-gray-700 italic font-semibold"><strong>*Campos obrigatórios</strong></p>
+        
+        <button type="submit" class="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-2 rounded transition duration-200">
+          Enviar
+        </button>
       </form>
     </div>
+    <script src="script.js"></script>
   </div>
-  
 </body>
 </html>

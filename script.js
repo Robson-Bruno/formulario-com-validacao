@@ -1,26 +1,40 @@
-const form = document.getElementById('myForm');
-const inputs = form.querySelectorAll('input');
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.querySelector("form");
+    const inputs = form.querySelectorAll("input, textarea");
 
-form.addEventListener('submit', function (e) {
-  e.preventDefault();
+    // Cria mensagem de sucesso
+    const successMessage = document.createElement("div");
+    successMessage.className = "success-message mt-4 text-center rounded";
+    successMessage.textContent = "Mensagem enviada com sucesso!";
+    form.appendChild(successMessage);
 
-  let formIsValid = true;
+    form.addEventListener("submit", (e) => {
+      e.preventDefault(); // Impede envio padrão do formulário
 
-  inputs.forEach(input => {
-    const errorSpan = input.nextElementSibling;
+      let valid = true;
 
-    if (input.value.trim() === '') {
-      input.classList.add('error');
-      errorSpan.textContent = 'Campo obrigatório';
-      formIsValid = false;
-    } else {
-      input.classList.remove('error');
-      errorSpan.textContent = '';
-    }
+      // Limpa erros anteriores
+      inputs.forEach((input) => {
+        input.classList.remove("input-error");
+      });
+
+      // Validação básica: se o campo está vazio
+      inputs.forEach((input) => {
+        if (input.value.trim() === "") {
+          input.classList.add("input-error");
+          valid = false;
+        }
+      });
+
+      if (valid) {
+        // Exibe mensagem de sucesso
+        successMessage.style.display = "block";
+
+        // Limpa os campos após 1 segundo
+        setTimeout(() => {
+          form.reset();
+          successMessage.style.display = "none";
+        }, 3000);
+      }
+    });
   });
-
-  if (formIsValid) {
-    alert('Formulário enviado com sucesso!');
-    form.reset();
-  }
-});
